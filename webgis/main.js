@@ -281,12 +281,9 @@ selectPOIInteraction.on("select", event =>
     addressElement.hidden = !poiAddress;
 });
 
-console.log("WAITING");
 //Add the layers to the legend when they are all loaded.
 waitSourcesLoading().then(() =>
 {
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-
     const iconFilter = (category, feature) =>
         category.id === feature.get("tipo");
 
@@ -294,16 +291,14 @@ waitSourcesLoading().then(() =>
         category.id === feature.get("id");
 
     const geologicLegendEntry = new LegendEntry(geologicLayer);
-    const tracksLegendEntry = new LegendEntryCategorized(tracksLayer, tracksCategories, tracksFilter);
-    const sectionsLegendEntry = new LegendEntryCategorized(sectionsLayer, sectionsCategories, tracksFilter);
-    const foodAndSleepLegendEntry = new LegendEntryCategorized(foodAndSleepLayer, foodAndDrinkCategories, iconFilter);
-    const infoAndSafetyLegendEntry = new LegendEntryCategorized(infoAndSafetyLayer, infoAndSafetyCategories, iconFilter);
+    const tracksLegendEntry = new LegendEntryCategorized(tracksLayer, tracksCategories, tracksFilter, iconPath);
+    const sectionsLegendEntry = new LegendEntryCategorized(sectionsLayer, sectionsCategories, tracksFilter, iconPath);
+    const foodAndSleepLegendEntry = new LegendEntryCategorized(foodAndSleepLayer, foodAndDrinkCategories, iconFilter, iconPath);
+    const infoAndSafetyLegendEntry = new LegendEntryCategorized(infoAndSafetyLayer, infoAndSafetyCategories, iconFilter, iconPath);
 
     legend.addEntry(geologicLegendEntry);
     legend.addEntry(tracksLegendEntry);
     legend.addEntry(sectionsLegendEntry);
     legend.addEntry(foodAndSleepLegendEntry);
     legend.addEntry(infoAndSafetyLegendEntry);
-
-    console.log("Legenda caricata!");
 });

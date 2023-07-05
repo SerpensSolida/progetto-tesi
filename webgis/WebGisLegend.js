@@ -121,10 +121,11 @@ export class LegendEntry
  */
 export class LegendEntryCategorized extends LegendEntry
 {
-	constructor(layer, categories, filter)
+	constructor(layer, categories, filter, iconPath = "")
 	{
 		super(layer);
 		this.filter = filter;
+		this.iconPath = iconPath;
 
 		this.collectFeatures(categories);
 	}
@@ -227,7 +228,7 @@ export class LegendEntryCategorized extends LegendEntry
 			if (category.img || category.color)
 			{
 				if (category.img)
-					img.style.maskImage = "url(/webgis/icons/" + category.img + ")";
+					img.style.maskImage = "url("+ this.iconPath + category.img + ")";
 				img.style.backgroundColor = category.color ? category.color : "#000";
 			}
 			else
