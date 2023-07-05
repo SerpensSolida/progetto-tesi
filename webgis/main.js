@@ -4,13 +4,13 @@ import {Map, Overlay, View} from 'ol';
 import {Select} from "ol/interaction";
 import {click} from "ol/events/condition";
 import {
-    foodAndSleepLayer, geologicLayer,
+    foodAndSleepLayer, marcheGeologicLayer,
     iconPath,
     iconStyle,
     infoAndSafetyLayer,
     mapLayer,
     sectionsLayer,
-    tracksLayer
+    tracksLayer, italyGeologicLayer
 } from "./layers";
 import LayerGroup from "ol/layer/Group";
 import {Fill, Icon, RegularShape, Stroke, Style} from "ol/style";
@@ -107,7 +107,7 @@ const mapView = new View(
 const map = new Map(
     {
         target: 'webgis',
-        layers: [mapLayer, geologicLayer, tracksLayer, sectionsLayer, poiLayerGroup],
+        layers: [mapLayer, italyGeologicLayer, marcheGeologicLayer, tracksLayer, sectionsLayer, poiLayerGroup],
         view: mapView
     });
 
@@ -290,13 +290,15 @@ waitSourcesLoading().then(() =>
     const tracksFilter = (category, feature) =>
         category.id === feature.get("id");
 
-    const geologicLegendEntry = new LegendEntry(geologicLayer);
+    const italyGeologicLegendEntry = new LegendEntry(italyGeologicLayer);
+    const marcheGeologicLegendEntry = new LegendEntry(marcheGeologicLayer);
     const tracksLegendEntry = new LegendEntryCategorized(tracksLayer, tracksCategories, tracksFilter, iconPath);
     const sectionsLegendEntry = new LegendEntryCategorized(sectionsLayer, sectionsCategories, tracksFilter, iconPath);
     const foodAndSleepLegendEntry = new LegendEntryCategorized(foodAndSleepLayer, foodAndDrinkCategories, iconFilter, iconPath);
     const infoAndSafetyLegendEntry = new LegendEntryCategorized(infoAndSafetyLayer, infoAndSafetyCategories, iconFilter, iconPath);
 
-    legend.addEntry(geologicLegendEntry);
+    legend.addEntry(italyGeologicLegendEntry);
+    legend.addEntry(marcheGeologicLegendEntry);
     legend.addEntry(tracksLegendEntry);
     legend.addEntry(sectionsLegendEntry);
     legend.addEntry(foodAndSleepLegendEntry);

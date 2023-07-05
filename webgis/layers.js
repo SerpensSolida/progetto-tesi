@@ -32,11 +32,11 @@ const mapLayerParam =
 //Tile layer.
 export const mapLayer = new TileLayer(mapLayerParam);
 
-//Geologic layer source.
-const geoserverUrl = "http://wms.cartografia.marche.it/geoserver/Geologia/wms";
-const geologicLayerSource = new ImageWMS(
+//Marche geologic layer source.
+const marcheWMS = "http://wms.cartografia.marche.it/geoserver/Geologia/wms";
+const marcheGeologicLayerSource = new ImageWMS(
 	{
-		url: geoserverUrl,
+		url: marcheWMS,
 		params:
 			{
 				layers: 'CartaGeologica',
@@ -53,7 +53,7 @@ const geologicLayerSource = new ImageWMS(
 //Convert to raster for editing.
 const modifiedGeologicSource = new Raster(
 	{
-		sources: [geologicLayerSource],
+		sources: [marcheGeologicLayerSource],
 		crossOrigin: 'anonymous',
 		operation: (pixels, data) =>
 		{
@@ -66,12 +66,38 @@ const modifiedGeologicSource = new Raster(
 		}
 	});
 
-//Geologic layer
-export const geologicLayer = new ImageLayer(
+//Marche Geologic layer
+export const marcheGeologicLayer = new ImageLayer(
 	{
-		title: "Carta Geologica",
+		title: "Carta Geologica della Regione Marche (1:10.000)",
 		visible: false,
 		source: modifiedGeologicSource,
+	});
+
+//Italy Geologic layer source.
+const italyWMS = "http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/WMS_v1.3/Vettoriali/Carta_geologica.map";
+const italyGeologicLayerSource = new TileWMS(
+	{
+		url: italyWMS,
+		params:
+			{
+				layers: 'GE.CARTAGEOLOGICA',
+				tiled: true,
+				srs: 'EPSG:4326',
+				bgcolor: "0xFFFFFF",
+				transparent: true,
+				format: "image/png",
+			},
+		crossOrigin: 'anonymous',
+		serverType: 'geoserver',
+	});
+
+//Geologic layer
+export const italyGeologicLayer = new TileLayer(
+	{
+		source: italyGeologicLayerSource,
+		title: "Carta Geologica d'Italia (1:100.000)",
+		visible: false,
 	});
 
 //Tracks layer source.
