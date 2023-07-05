@@ -1,0 +1,227 @@
+.map-container
+{
+  height: 70vh;
+  margin: 20px;
+}
+
+#section-img
+{
+  width: 70vw;
+  height: auto;
+}
+
+.layer input
+{
+  display: block !important;
+}
+
+.panel
+{
+  font-family: Calibri, serif;
+}
+
+.map-legend
+{
+  top: 65px;
+  left: .5em;
+  width: fit-content;
+  height: fit-content;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  position: absolute;
+  font-family: Calibri, serif;
+  overflow-y: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+  /*min-width: 40vw;*/
+  max-height: 75%;
+  max-width: 95%;
+  display: block !important;
+}
+
+.map-legend.mobile
+{
+  top: 80px;
+  left: .5em;
+}
+
+.map-legend:after, .map-legend:before
+{
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.map-legend-header.mobile
+{
+  font-size: 15px;
+}
+
+.map-legend-container
+{
+  padding-top: 10px;
+  padding-left: 10px;
+  display: block;
+}
+
+.map-legend-container.mobile
+{
+  display: none;
+}
+
+.map-legend-container input
+{
+  display: inline;
+}
+
+.map-legend-main-entry
+{
+  list-style-type: none;
+  list-style-position: inside;
+}
+
+.map-legend-sub-entry
+{
+  padding-left: 20px;
+  list-style-type: none;
+  list-style-position: outside;
+}
+
+.map-legend-collapsible
+{
+  overflow: hidden;
+  max-height: 0;
+  max-width: max-content;
+  transition: max-height 0.2s ease-out;
+  display: block;
+}
+
+.map-legend-collapsible-arrow
+{
+  font-family: Monospaced, monospace;
+  font-weight: bold;
+  padding-left: 20px;
+  float: right;
+}
+
+.hoverable
+{
+  display: inline;
+  overflow: hidden;
+}
+
+.hoverable:hover
+{
+  background-image: -ms-linear-gradient(#d9d9d9, #3c4fe0);
+  color: #3c4fe0;
+}
+
+.map-legend-label
+{
+  display: inline-block;
+  font-size: 18px;
+  font-family: Calibri, serif;
+  font-weight: normal;
+}
+
+.map-legend-label.mobile
+{
+  font-size: small;
+}
+
+.map-legend-checkbox
+{
+  margin-right: 5px;
+}
+
+.map-legend-icon
+{
+  display: inline-block;
+  mask-type: alpha;
+  mask-size: 24px;
+  height: 20px;
+  width: 20px;
+  /*margin: 4px;*/
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.map-legend-icon.mobile
+{
+  mask-size: 12px;
+  height: 12px;
+  width: 12px;
+}
+
+/*.map-legend-color*/
+/*{*/
+/*  display: inline-block;*/
+/*  height: 20px;*/
+/*  width: 20px;*/
+/*  //margin-bottom: 15px;*/
+/*  margin: 4px;*/
+/*  vertical-align: middle;*/
+/*}*/
+
+.popup
+{
+  width: fit-content;
+  height: auto;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  font-family: Calibri, serif;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 280px;
+}
+
+.popup:after, .popup:before
+{
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.popup:after
+{
+  border-top-color: white;
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+
+.popup:before
+{
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+
+.ol-popup-closer
+{
+  text-decoration: none;
+  position: absolute;
+  top: 2px;
+  right: 8px;
+}
+
+.ol-popup-closer:after
+{
+  content: "✖";
+}
