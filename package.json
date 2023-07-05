@@ -4,7 +4,7 @@
   "scripts": {
     "start": "vite --host --port 80 -l info",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "npm run build && vite preview"
   },
   "devDependencies": {
     "vite": "^4.0.4"
