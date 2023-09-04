@@ -25,7 +25,7 @@ const mapLayerParam =
 	{
 		source: new OSM(
 			{
-				url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+				url: "https://maps.refuges.info/hiking/{z}/{x}/{y}.png"
 			})
 	};
 
@@ -92,7 +92,7 @@ const italyGeologicLayerSource = new TileWMS(
 		serverType: 'geoserver',
 	});
 
-//Geologic layer
+//Geologic layer.
 export const italyGeologicLayer = new TileLayer(
 	{
 		source: italyGeologicLayerSource,
